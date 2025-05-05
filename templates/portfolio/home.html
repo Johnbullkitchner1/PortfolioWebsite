@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchner Johnbull Portfolio</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>gsap.registerPlugin(ScrollTrigger);</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Kitchner Johnbull</h1>
+            <nav>
+                <a href="#about" class="nav-item"><i class="fas fa-user"></i> About</a>
+                <a href="#services" class="nav-item"><i class="fas fa-tools"></i> Services</a>
+                <a href="#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a>
+                <a href="#faq" class="nav-item"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+                <div class="mode-toggle">
+                    <i class="fas fa-sun" id="light-mode"></i>
+                    <i class="fas fa-moon" id="dark-mode" style="display: none;"></i>
+                </div>
+            </nav>
+        </div>
+        <img id="nav-football" src="/static/images/football.png" alt="Football">
+    </header>
+
+    <section id="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h2>Hello, I’m Kitchner Johnbull</h2>
+            <p>I am a <span id="typed-text"></span></p>
+        </div>
+        <img id="car" src="/static/images/car.png" alt="Car">
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>I’m Kitchner Johnbull, a passionate Computer Science graduate from Federal University Ndufu-Alike Ikwo (FUNAI), based in Abuja, Nigeria. With a strong foundation in both front-end and back-end development, I specialize in crafting scalable, user-friendly web applications. My journey began with hands-on experience at companies like Edifel Designs and Eztech, where I honed my skills in React.js, Nest.js, and Tailwind CSS. I thrive on solving complex problems, building responsive designs, and integrating dynamic features to enhance user experiences.</p>
+                <p>Beyond coding, I enjoy exploring new technologies, contributing to open-source projects on GitHub, and staying active with hobbies like football and sprinting. My goal is to leverage my expertise to deliver innovative solutions that drive business growth and user satisfaction.</p>
+            </div>
+            <div class="about-image">
+                <img src="/static/images/profile.jpg" alt="Kitchner Johnbull">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div id="particles-services"></div>
+        <h2>My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Creating responsive and dynamic websites using React.js, HTML, CSS, and Tailwind CSS.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-server"></i>
+                <h3>Backend Development</h3>
+                <p>Building robust backends with Nest.js, Node.js, and PostgreSQL.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>UI/UX Design</h3>
+                <p>Designing intuitive interfaces to enhance user engagement.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-plug"></i>
+                <h3>API Integration</h3>
+                <p>Integrating APIs and optimizing performance with RESTful architectures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <a href="https://www.edifeldesignsllc.com/" target="_blank">
+                    <img src="/static/images/edifeldesigns.jpg" alt="Edifel Designs Website">
+                    <div class="portfolio-overlay">
+                        <h3>Edifel Designs Website</h3>
+                        <p>A responsive site built with React.js and Tailwind CSS.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="https://github.com/Johnbullkitchner1/calendar-app" target="_blank">
+                    <img src="/static/images/calendarapp.jpg" alt="Calendar App">
+                    <div class="portfolio-overlay">
+                        <h3>Calendar App</h3>
+                        <p>An interactive app with event markers and animations.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div id="particles-faq"></div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What technologies do you specialize in?</h3>
+                <p>I specialize in React.js, JavaScript, HTML5, CSS3, Tailwind CSS, Nest.js, and PostgreSQL.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can you help my business?</h3>
+                <p>I can develop custom web solutions to boost online presence and streamline operations.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer ongoing support?</h3>
+                <p>Yes, I provide real-time support and free updates.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can you work on tight deadlines?</h3>
+                <p>Yes, I’m equipped to deliver quality work efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>FCT, Abuja, Nigeria | Phone: 09055948626 | Email: <a href="mailto:kitchnerbullswork@gmail.com">kitchnerbullswork@gmail.com</a></p>
+        <div class="social-icons">
+            <a href="https://twitter.com/kitchneer" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/09055948626" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:kitchnerbullswork@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/Johnbullkitchner1" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <footer>
+        <p>© 2025 Kitchner Johnbull. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/animations.js"></script>
+    <script>
+        // Particles.js configurations
+        particlesJS('particles-js', {
+            particles: { number: { value: 80, density: { enable: true, value_area: 800 } }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, move: { enable: true, speed: 2, direction: 'none', random: true } },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } }, modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } } }
+        });
+        particlesJS('particles-services', {
+            particles: { number: { value: 50, density: { enable: true, value_area: 600 } }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 2, random: true }, move: { enable: true, speed: 1.5, direction: 'none', random: true } },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } }, modes: { repulse: { distance: 80 } } }
+        });
+        particlesJS('particles-faq', {
+            particles: { number: { value: 40, density: { enable: true, value_area: 500 } }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.2, random: true }, size: { value: 1.5, random: true }, move: { enable: true, speed: 1, direction: 'none', random: true } },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } }, modes: { repulse: { distance: 60 } } }
+        });
+
+        // Typewriter effect
+        const typed = new Typed('#typed-text', {
+            strings: ['Frontend Developer', 'Backend Developer', 'UI/UX Designer'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 1500
+        });
+
+        // Dark/Light Mode Toggle
+        const toggle = document.querySelector('.mode-toggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const lightMode = document.getElementById('light-mode');
+            const darkMode = document.getElementById('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                lightMode.style.display = 'none';
+                darkMode.style.display = 'inline';
+            } else {
+                lightMode.style.display = 'inline';
+                darkMode.style.display = 'none';
+            }
+        });
+
+        // Back to Top button functionality
+        window.onscroll = function() {
+            const button = document.getElementById('back-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Ensure page starts at the top on load/refresh
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
