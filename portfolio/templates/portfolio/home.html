@@ -12,8 +12,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
+    <div class="loader" id="loader"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
     <header>
         <div class="header-content">
             <h1>Kitchner Johnbull</h1>
@@ -45,8 +62,8 @@
         <div class="about-container">
             <div class="about-text">
                 <h2>About Me</h2>
-                <p>I’m Kitchner Johnbull, a passionate Computer Science graduate from Federal University Ndufu-Alike Ikwo (FUNAI), based in Abuja, Nigeria. With a strong foundation in both front-end and back-end development, I specialize in crafting scalable, user-friendly web applications. My journey began with hands-on experience at companies like Edifel Designs and Eztech, where I honed my skills in React.js, Nest.js, and Tailwind CSS. I thrive on solving complex problems, building responsive designs, and integrating dynamic features to enhance user experiences.</p>
-                <p>Beyond coding, I enjoy exploring new technologies, contributing to open-source projects on GitHub, and staying active with hobbies like football and sprinting. My goal is to leverage my expertise to deliver innovative solutions that drive business growth and user satisfaction.</p>
+                <p>{{ about_text|default:"I’m Kitchner Johnbull, a passionate Computer Science graduate from Federal University Ndufu-Alike Ikwo (FUNAI), based in Abuja, Nigeria. With a strong foundation in both front-end and back-end development, I specialize in crafting scalable, user-friendly web applications. My journey began with hands-on experience at companies like Edifel Designs and Eztech, where I honed my skills in React.js, Nest.js, and Tailwind CSS. I thrive on solving complex problems, building responsive designs, and integrating dynamic features to enhance user experiences." }}</p>
+                <p>{{ about_text_extra|default:"Beyond coding, I enjoy exploring new technologies, contributing to open-source projects on GitHub, and staying active with hobbies like football and sprinting. My goal is to leverage my expertise to deliver innovative solutions that drive business growth and user satisfaction." }}</p>
             </div>
             <div class="about-image">
                 <img src="/static/images/profile.jpg" alt="Kitchner Johnbull">
@@ -58,50 +75,30 @@
         <div id="particles-services"></div>
         <h2>My Services</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-code"></i>
-                <h3>Web Development</h3>
-                <p>Creating responsive and dynamic websites using React.js, HTML, CSS, and Tailwind CSS.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-server"></i>
-                <h3>Backend Development</h3>
-                <p>Building robust backends with Nest.js, Node.js, and PostgreSQL.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>UI/UX Design</h3>
-                <p>Designing intuitive interfaces to enhance user engagement.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-plug"></i>
-                <h3>API Integration</h3>
-                <p>Integrating APIs and optimizing performance with RESTful architectures.</p>
-            </div>
+            {% for service in services %}
+                <div class="service-card">
+                    <i class="fas {{ service.icon }}"></i>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                </div>
+            {% endfor %}
         </div>
     </section>
 
     <section id="portfolio">
         <h2>My Portfolio</h2>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <a href="https://www.edifeldesignsllc.com/" target="_blank">
-                    <img src="/static/images/edifeldesigns.jpg" alt="Edifel Designs Website">
-                    <div class="portfolio-overlay">
-                        <h3>Edifel Designs Website</h3>
-                        <p>A responsive site built with React.js and Tailwind CSS.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="portfolio-item">
-                <a href="https://github.com/Johnbullkitchner1/calendar-app" target="_blank">
-                    <img src="/static/images/calendarapp.jpg" alt="Calendar App">
-                    <div class="portfolio-overlay">
-                        <h3>Calendar App</h3>
-                        <p>An interactive app with event markers and animations.</p>
-                    </div>
-                </a>
-            </div>
+            {% for item in portfolio %}
+                <div class="portfolio-item">
+                    <a href="{{ item.link }}" target="_blank">
+                        <img src="/static/images/{{ item.image }}" alt="{{ item.title }}">
+                        <div class="portfolio-overlay">
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.description }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     </section>
 
@@ -132,7 +129,7 @@
         <h2>Contact Me</h2>
         <p>FCT, Abuja, Nigeria | Phone: 09055948626 | Email: <a href="mailto:kitchnerbullswork@gmail.com">kitchnerbullswork@gmail.com</a></p>
         <div class="social-icons">
-            <a href="https://twitter.com/kitchneer" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://twitter.com/yourtwitter" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://wa.me/09055948626" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:kitchnerbullswork@gmail.com"><i class="fas fa-envelope"></i></a>
             <a href="https://github.com/Johnbullkitchner1" target="_blank"><i class="fab fa-github"></i></a>
@@ -147,6 +144,13 @@
 
     <script src="/static/js/animations.js"></script>
     <script>
+        // Hide loader once page is fully loaded
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
+            window.scrollTo(0, 0); // Ensure top on load
+        });
+
         // Particles.js configurations
         particlesJS('particles-js', {
             particles: { number: { value: 80, density: { enable: true, value_area: 800 } }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, move: { enable: true, speed: 2, direction: 'none', random: true } },
@@ -198,11 +202,6 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Ensure page starts at the top on load/refresh
-        window.onload = function() {
-            window.scrollTo(0, 0);
-        };
     </script>
 </body>
 </html>
