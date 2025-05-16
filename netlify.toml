@@ -1,0 +1,8 @@
+[build]
+  command = "pip install -r requirements.txt && python manage.py collectstatic --noinput --clear && python render_static.py && mkdir -p dist/static && cp -r staticfiles/* dist/static/ && sed -i 's|/static/|static/|g' dist/index.html"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
