@@ -77,6 +77,43 @@ nav {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    position: relative;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.navbar-toggle-icon {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-item {
@@ -330,38 +367,56 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        align-items: flex-start;
+    .navbar-toggle {
+        display: flex;
     }
-    nav {
-        margin-top: 10px;
+
+    .nav-links {
+        display: none;
         flex-direction: column;
-        margin-right: 0;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: linear-gradient(90deg, #1a1a2e, #2e2e4e);
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
+
+    .nav-links.active {
+        display: flex;
+    }
+
     .nav-item, .mode-toggle {
         margin: 10px 0;
     }
+
     #hero {
         min-height: 60vh;
         padding-top: 60px;
     }
+
     #hero h2 {
         font-size: 2em;
     }
+
     #hero p {
         font-size: 1.2em;
     }
+
     .about-container {
         flex-direction: column;
         text-align: center;
     }
+
     .about-text, .about-image {
         max-width: 100%;
     }
+
     .about-image img {
         margin-top: 20px;
     }
+
     .services-grid, .faq-grid, .portfolio-grid {
         grid-template-columns: 1fr;
     }
@@ -371,6 +426,7 @@ footer {
     .about-container {
         flex-wrap: wrap;
     }
+
     .about-text, .about-image {
         max-width: 48%;
     }
