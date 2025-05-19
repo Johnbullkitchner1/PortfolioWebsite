@@ -35,14 +35,21 @@
         <div class="header-content">
             <h1>Kitchner Johnbull</h1>
             <nav>
-                <a href="#about" class="nav-item"><i class="fas fa-user"></i> About</a>
-                <a href="#services" class="nav-item"><i class="fas fa-tools"></i> Services</a>
-                <a href="#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a>
-                <a href="#faq" class="nav-item"><i class="fas fa-question-circle"></i> FAQ</a>
-                <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
-                <div class="mode-toggle">
-                    <i class="fas fa-sun" id="light-mode"></i>
-                    <i class="fas fa-moon" id="dark-mode" style="display: none;"></i>
+                <button class="navbar-toggle" aria-label="Toggle menu">
+                    <span class="navbar-toggle-icon"></span>
+                    <span class="navbar-toggle-icon"></span>
+                    <span class="navbar-toggle-icon"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="#about" class="nav-item"><i class="fas fa-user"></i> About</a>
+                    <a href="#services" class="nav-item"><i class="fas fa-tools"></i> Services</a>
+                    <a href="#portfolio" class="nav-item"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    <a href="#faq" class="nav-item"><i class="fas fa-question-circle"></i> FAQ</a>
+                    <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+                    <div class="mode-toggle">
+                        <i class="fas fa-sun" id="light-mode"></i>
+                        <i class="fas fa-moon" id="dark-mode" style="display: none;"></i>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -176,7 +183,7 @@
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             loader.style.display = 'none';
-            window.scrollTo(0, 0); // Ensure top on load
+            window.scrollTo(0, 0);
         });
 
         // Particles.js configurations
@@ -193,13 +200,20 @@
             interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } }, modes: { repulse: { distance: 60 } } }
         });
 
-        // Typewriter effect
-        const typed = new Typed('#typed-text', {
-            strings: ['Frontend Developer', 'Backend Developer', 'UI/UX Designer'],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true,
-            backDelay: 1500
+        // Typewriter effect with error handling
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Typed element:', document.getElementById('typed-text'));
+            try {
+                const typed = new Typed('#typed-text', {
+                    strings: ['Frontend Developer', 'Backend Developer', 'UI/UX Designer'],
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    loop: true,
+                    backDelay: 1500
+                });
+            } catch (error) {
+                console.error('Typed.js initialization failed:', error);
+            }
         });
 
         // Dark/Light Mode Toggle
@@ -230,6 +244,38 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Hamburger menu toggle with dropdown animation
+        const toggleButton = document.querySelector('.navbar-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        let isOpen = false;
+        toggleButton.addEventListener('click', () => {
+            isOpen = !isOpen;
+            navLinks.classList.toggle('active');
+            toggleButton.classList.toggle('active');
+            if (isOpen) {
+                navLinks.style.display = 'flex';
+                gsap.fromTo(navLinks, { y: '-100%', opacity: 0, transformOrigin: 'top' }, { y: '0%', opacity: 1, duration: 0.5, ease: 'power2.out', onComplete: () => {
+                    navLinks.style.transform = 'translateY(0)';
+                }});
+            } else {
+                gsap.to(navLinks, { y: '-100%', opacity: 0, duration: 0.5, ease: 'power2.out', onComplete: () => {
+                    navLinks.style.display = 'none';
+                }});
+            }
+        });
+
+        // Reset navbar state on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                toggleButton.classList.remove('active');
+                gsap.set(navLinks, { y: 0, opacity: 1, display: 'flex' });
+                isOpen = false;
+            } else if (!isOpen) {
+                gsap.set(navLinks, { y: '-100%', opacity: 0, display: 'none' });
+            }
+        });
     </script>
 </body>
 </html>
